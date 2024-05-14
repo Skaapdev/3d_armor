@@ -836,7 +836,9 @@ end
 --  @return Armor element.
 armor.get_element = function(self, item_name)
 	for _, element in pairs(armor.elements) do
-		if minetest.get_item_group(item_name, "armor_"..element) > 0 then
+		if element == nil then
+			print("armor.get_element: element == nil | dump(_):" .. dump(_))
+		elseif minetest.get_item_group(item_name, "armor_"..tostring(element)) > 0 then
 			return element
 		end
 	end
