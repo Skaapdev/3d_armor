@@ -37,11 +37,7 @@ wieldview.update_wielded_item = function(self, player)
 		return
 	end
 	local name = player:get_player_name()
-	--print("3darmor wieldview dump: " .. dump(pmob_misson_request[name]) .. " for " .. name)
-	if pmob_misson_request[name].active == 1 then
-	    --print("3darmor wieldview disabled for pmob: " .. name)
-	    return
-	end -- Skaapdev disable for pmob.
+	if pmob.info[name] and pmob.info[name].state ~= 0 then return end -- Skaapdev disable for pmob.
 	
 	local stack = player:get_wielded_item()
 	local item = stack:get_name()
